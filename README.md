@@ -1,1 +1,4 @@
 # dwm
+
+- xrdb
+- uselessgap
