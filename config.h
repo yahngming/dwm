@@ -13,7 +13,7 @@ static char normfgcolor[]             = "#bbbbbb";
 static char selfgcolor[]              = "#eeeeee";
 static char selbordercolor[]          = "#005577";
 static char selbgcolor[]              = "#005577";
-static const unsigned int baralpha    = 0xdd;
+static const unsigned int baralpha    = 0xee;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3] = {
        /*               fg           bg           border   */
@@ -27,7 +27,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "󰲡", "󰲣", "󰲥", "󰲧", "󰲩", "󰲫", "󰲭", "󰲯", "󰲱" };
+static const char *tags[] = { "", "󰝰", "", "", "󰇮", "󰲫", "󰎕", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
