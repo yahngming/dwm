@@ -1,4 +1,5 @@
 # dwm
 
-- xrdb
+- alpha
 - uselessgap
+- xrdb
