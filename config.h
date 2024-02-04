@@ -6,7 +6,7 @@ static const unsigned int gappx       = 6;        /* gaps between windows */
 static const unsigned int snap        = 32;       /* snap pixel */
 static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 0;        /* 0 means bottom bar */
-static const char *fonts[]            = { "monospace:size=18", "symbol:size=22" };
+static const char *fonts[]            = { "monospace:size=20" };
 static char normbgcolor[]             = "#222222";
 static char normbordercolor[]         = "#444444";
 static char normfgcolor[]             = "#bbbbbb";
@@ -27,7 +27,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆", "➇", "➈" };
+static const char *tags[] = { "󰲡", "󰲣", "󰲥", "󰲧", "󰲩", "󰲫", "󰎸", "󰲯", "󰲱" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -47,9 +47,9 @@ static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen 
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "◫",       tile },    /* first entry is default */
-	{ "❏",       NULL },    /* no layout function means floating behavior */
-	{ "▣",       monocle },
+	{ "",       tile },    /* first entry is default */
+	{ "󱂬",       NULL },    /* no layout function means floating behavior */
+	{ "",       monocle },
 };
 
 /* key definitions */
