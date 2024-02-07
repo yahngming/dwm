@@ -6,6 +6,7 @@ static const unsigned int gappx       = 6;        /* gaps between windows */
 static const unsigned int snap        = 32;       /* snap pixel */
 static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 0;        /* 0 means bottom bar */
+static const int barspacing           = 4;        /* spacing between bar and fonts */
 static const char *fonts[]            = { "monospace:size=20", "symbol:size=24" };
 static char normbgcolor[]             = "#222222";
 static char normbordercolor[]         = "#444444";
