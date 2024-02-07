@@ -77,11 +77,11 @@ static const char *termcmd[]  = { "st", NULL };
 /* spawn application whenever a tag is middle clicked */
 static const Arg tagexec[] = {
 	{ .v = termcmd },
-	SHCMD("st -e lf"),
+	{ .v = (const char*[]){ "st -e lf", NULL } },
 	SHCMD("st -e pianobar"),
 	SHCMD("st -e neomutt"),
 	GTKCMD("freecad"),
-	GTKCMD("libreoffice"),
+	{ .v = (const char*[]){ "libreoffice", NULL } },
 	GTKCMD("steam"),
 	GTKCMD("virt-manager"),
 	GTKCMD("firefox")
