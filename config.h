@@ -52,15 +52,16 @@ static const int resizehints    = 0;    /* 1 means respect size hints in tiled r
 static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "◫",       tile },    /* first entry is default */
-	{ "❏",       NULL },    /* no layout function means floating behavior */
-	{ "◻",       monocle },
+	/* symbol    arrange function */
+	{ "",       tile },    /* first entry is default */
+	{ "󱂬",       NULL },    /* no layout function means floating behavior */
+	{ "",       monocle },
 };
 
 /* custom symbols for nr. of clients in monocle layout */
 /* when clients >= LENGTH(monocles), uses the last element */
-static const char *monocles[] = { "🯱", "🯲", "🯳", "🯴", "🯵", "🯶", "🯷", "🯸", "🯹", "🯰" };
+/* static const char *monocles[] = { "🯱", "🯲", "🯳", "🯴", "🯵", "🯶", "🯷", "🯸", "🯹", "🯰" }; */
+static const char *monocles[] = { "󰲡", "󰲣", "󰲥", "󰲧", "󰲩", "󰲫", "󰲭", "󰲯", "󰲱", "󰲳" };
 
 /* key definitions */
 #define MODKEY Mod4Mask
