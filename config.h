@@ -6,7 +6,7 @@ static const unsigned int gappx       = 6;        /* gaps between windows */
 static const unsigned int snap        = 32;       /* snap pixel */
 static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 0;        /* 0 means bottom bar */
-static const char *fonts[]            = { "monospace:size=20", "symbol:size=22" };
+static const char *fonts[]            = { "monospace:size=20", "symbol:size=24" };
 static char normbgcolor[]             = "#222222";
 static char normbordercolor[]         = "#444444";
 static char normfgcolor[]             = "#bbbbbb";
@@ -27,7 +27,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "󰝰", "", "", "󰇮", "", "", "", "󰖟" };
+static const char *tags[] = { "", "󰝰", "", "󰇮", "󰽉", "󰈙", "", "", "󰖟" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -35,11 +35,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class           instance    title       tags mask     isfloating   monitor */
-	{ "lf",            NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "libreoffice",   NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "bc",            NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "neomutt",       NULL,       NULL,       1 << 4,       0,           -1 },
-	{ "pianobar",      NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "freecad",       NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "libreoffice",   NULL,       NULL,       1 << 5,       0,           -1 },
 	{ "steam",         NULL,       NULL,       1 << 6,       0,           -1 },
 	{ "virt-manager",  NULL,       NULL,       1 << 7,       0,           -1 },
 	{ "firefox",       NULL,       NULL,       1 << 8,       0,           -1 },
