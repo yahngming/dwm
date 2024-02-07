@@ -66,25 +66,22 @@ static const char *monocles[] = { "󰲡", "󰲣", "󰲥", "󰲧", "󰲩", "󰲫"
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-/* helper for launching gtk application */
-#define GTKCMD(cmd) { .v = (const char*[]){ "/usr/bin/gtk-launch", cmd, NULL } }
-
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
-/* spawn application whenever a tag is middle clicked */
+/* applications per tag */
 static const Arg tagexec[] = {
 	{ .v = termcmd },
 	{ .v = (const char*[]){ "st", "-e", "lf", NULL } },
-	SHCMD("st -e pianobar"),
-	SHCMD("st -e neomutt"),
-	GTKCMD("freecad"),
+	{ .v = (const char*[]){ "st", "-e", "pianobar", NULL } },
+	{ .v = (const char*[]){ "st", "-e", "neomutt", NULL } },
+	{ .v = (const char*[]){ "freecad", NULL } },
 	{ .v = (const char*[]){ "libreoffice", NULL } },
-	GTKCMD("steam"),
-	GTKCMD("virt-manager"),
-	GTKCMD("firefox")
+	{ .v = (const char*[]){ "steam", NULL } },
+	{ .v = (const char*[]){ "virt-manager", NULL } },
+	{ .v = (const char*[]){ "firefox", NULL } }
 };
 
 /* keybidings */
