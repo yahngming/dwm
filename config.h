@@ -27,16 +27,22 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "󰝰", "", "", "󰇮", "", "󰖟", "", "" };
+static const char *tags[] = { "", "󰝰", "", "", "󰇮", "", "", "", "󰖟" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class           instance    title       tags mask     isfloating   monitor */
+	{ "lf",            NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "libreoffice",   NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "bc",            NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "neomutt",       NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "pianobar",      NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "steam",         NULL,       NULL,       1 << 6,       0,           -1 },
+	{ "virt-manager",  NULL,       NULL,       1 << 7,       0,           -1 },
+	{ "firefox",       NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -51,6 +57,10 @@ static const Layout layouts[] = {
 	{ "❏",       NULL },    /* no layout function means floating behavior */
 	{ "◻",       monocle },
 };
+
+/* custom symbols for nr. of clients in monocle layout */
+/* when clients >= LENGTH(monocles), uses the last element */
+static const char *monocles[] = { "🯱", "🯲", "🯳", "🯴", "🯵", "🯶", "🯷", "🯸", "🯹", "🯰" };
 
 /* key definitions */
 #define MODKEY Mod4Mask
