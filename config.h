@@ -34,12 +34,8 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class           instance    title       tags mask     isfloating   monitor */
-	{ "freecad",       NULL,       NULL,       1 << 4,       0,           -1 },
-	{ "libreoffice",   NULL,       NULL,       1 << 5,       0,           -1 },
-	{ "steam",         NULL,       NULL,       1 << 6,       0,           -1 },
-	{ "virt-manager",  NULL,       NULL,       1 << 7,       0,           -1 },
-	{ "firefox",       NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class       instance    title       tags mask     isfloating   monitor */
+	{  NULL,       NULL,       NULL,       0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -57,7 +53,6 @@ static const Layout layouts[] = {
 
 /* custom symbols for nr. of clients in monocle layout */
 /* when clients >= LENGTH(monocles), uses the last element */
-/* static const char *monocles[] = { "🯱", "🯲", "🯳", "🯴", "🯵", "🯶", "🯷", "🯸", "🯹", "🯰" }; */
 static const char *monocles[] = { "󰲡", "󰲣", "󰲥", "󰲧", "󰲩", "󰲫", "󰲭", "󰲯", "󰲱", "󰲳" };
 
 /* key definitions */
@@ -128,4 +123,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
