@@ -79,7 +79,7 @@ static const Arg tagexec[] = {
 	{ .v = termcmd },
 	SHCMD("st -e lf"),
 	SHCMD("st -e pianobar"),
-	SHCMD("st -e neomutt"),,
+	SHCMD("st -e neomutt"),
 	GTKCMD("freecad"),
 	GTKCMD("libreoffice"),
 	GTKCMD("steam"),
