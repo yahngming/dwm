@@ -66,11 +66,28 @@ static const char *monocles[] = { "󰲡", "󰲣", "󰲥", "󰲧", "󰲩", "󰲫"
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+/* helper for launching gtk application */
+#define GTKCMD(cmd) { .v = (const char*[]){ "/usr/bin/gtk-launch", cmd, NULL } }
+
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+/* spawn application whenever a tag is middle clicked */
+static const Arg tagexec[] = {
+	{ .v = termcmd },
+	SHCMD("st -e lf"),
+	SHCMD("st -e pianobar"),
+	SHCMD("st -e neomutt"),,
+	GTKCMD("freecad"),
+	GTKCMD("libreoffice"),
+	GTKCMD("steam"),
+	GTKCMD("virt-manager"),
+	GTKCMD("firefox")
+};
+
+/* keybidings */
 static const Key keys[] = {
 	/* modifier                     key           function        argument */
 	{ MODKEY,                       XK_space,     spawn,          {.v = dmenucmd } },
@@ -120,6 +137,7 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
+	{ ClkTagBar,            0,              Button2,        spawntag,       {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
