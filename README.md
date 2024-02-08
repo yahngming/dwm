@@ -4,6 +4,7 @@
 - bar height
 - clientmonoclesymbol
 - notitle
-- spawntag (also switch to tag after spawning)
+- shiftview
+- spawntag (and switch to tag after spawning)
 - uselessgap
 - xrdb
