@@ -5,6 +5,6 @@
 - clientmonoclesymbol
 - notitle
 - shiftview
-- spawntag (and switch to tag after spawning)
+- spawntag (switch to tag before spawning)
 - uselessgap
 - xrdb
