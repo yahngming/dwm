@@ -28,7 +28,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "󰝰", "󰝚", "󰇮", "󰽉", "󰈙", "", "", "󰖟" };
+static const char *tags[] = { "", "󰝰", "󰝚", "󰇮", "󰽉", "󰈙", "󰖟", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -54,7 +54,7 @@ static const Layout layouts[] = {
 
 /* custom symbols for nr. of clients in monocle layout */
 /* when clients >= LENGTH(monocles), uses the last element */
-static const char *monocles[] = { "󰲡", "󰲣", "󰲥", "󰲧", "󰲩", "󰲫", "󰲭", "󰲯", "󰲱", "󰲳" };
+static const char *monocles[] = { "󰲡", "󰲣", "󰲥", "󰲧", "󰲫", "󰲩", "󰲭", "󰲯", "󰲱", "󰲳" };
 
 /* key definitions */
 #define MODKEY Mod4Mask
@@ -78,11 +78,11 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){ "st", "-e", "lf", NULL } },
 	{ .v = (const char*[]){ "st", "-e", "pianobar", NULL } },
 	{ .v = (const char*[]){ "st", "-e", "neomutt", NULL } },
-	{ .v = (const char*[]){ "freecad", NULL } },
 	{ .v = (const char*[]){ "libreoffice", NULL } },
+	{ .v = (const char*[]){ "freecad", NULL } },
+	{ .v = (const char*[]){ "firefox", NULL } },
 	{ .v = (const char*[]){ "steam", NULL } },
-	{ .v = (const char*[]){ "virt-manager", NULL } },
-	{ .v = (const char*[]){ "firefox", NULL } }
+	{ .v = (const char*[]){ "virt-manager", NULL } }
 };
 
 /* keybidings */
