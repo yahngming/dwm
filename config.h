@@ -17,12 +17,12 @@ static char selbgcolor[]              = "#005577";
 static const unsigned int baralpha    = 0xee;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
-	/*               fg           bg           border   */
+	/*               fg           bg           border         */
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
 	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 static const unsigned int alphas[][3] = {
-	/*               fg           bg           border   */
+	/*               fg           bg           border     */
 	[SchemeNorm] = { OPAQUE,      baralpha,    borderalpha },
 	[SchemeSel]  = { OPAQUE,      baralpha,    borderalpha },
 };
