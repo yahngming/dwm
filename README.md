@@ -1,6 +1,6 @@
 # dwm
 
-![screenshot](https://github.com/yahngming/dwm/assets/6890460/0137b8b9-9dac-4247-8d8d-9f8c4c768525)
+![screenshot](https://github.com/yahngming/dwm/assets/6890460/2f4602e1-bc88-4bd1-9d6a-3075fa4ac39f)
 
 - alpha
 - bar height
