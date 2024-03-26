@@ -47,14 +47,14 @@ static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen 
 
 static const Layout layouts[] = {
 	/* symbol    arrange function */
-	{ "◫",      tile },    /* first entry is default */
+	{ "⊞",      tile },    /* first entry is default */
 	{ "❏",      NULL },    /* no layout function means floating behavior */
 	{ "🗖",      monocle },
 };
 
 /* custom symbols for nr. of clients in monocle layout */
 /* when clients >= LENGTH(monocles), uses the last element */
-static const char *monocles[] = { "①", "󰲣", "󰲥", "󰲧", "󰲩", "󰲫", "󰲭", "󰲯", "󰲱", "󰲳" };
+static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆", "➇", "➈" };
 
 /* key definitions */
 #define MODKEY Mod4Mask
