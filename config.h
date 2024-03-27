@@ -3,11 +3,11 @@
 /* appearance */
 static const unsigned int borderpx    = 1;        /* border pixel of windows */
 static const unsigned int gappx       = 8;        /* gaps between windows */
-static const unsigned int snap        = 32;       /* snap pixel */
+static const unsigned int snap        = 8;        /* snap pixel */
 static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 0;        /* 0 means bottom bar */
 static const int barspacing           = 16;       /* spacing between bar and fonts */
-static const char *fonts[]            = { "symbol:size=32" };
+static const char *fonts[]            = { "symbol:size=16" };
 static char normbgcolor[]             = "#222222";
 static char normbordercolor[]         = "#444444";
 static char normfgcolor[]             = "#bbbbbb";
