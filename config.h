@@ -90,7 +90,7 @@ static const Key keys[] = {
 	/* modifier                     key              function           argument */
 	{ MODKEY,                       XK_space,        spawn,             {.v = dmenucmd } },
 	{ MODKEY,                       XK_grave,        spawn,             {.v = termcmd } },
-	{ MODKEY,                       XK_Return,       spawn,             {.v = (const char*[]){ "cmatrix", NULL } } },
+	{ MODKEY,                       XK_Return,       spawn,             SHCMD("cmatrix") },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1 } },
 	{ MODKEY,                       XK_k,            focusstack,        {.i = -1 } },
