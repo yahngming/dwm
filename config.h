@@ -1,5 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
+/* constants */
+#define TERMINAL "st"
+
 /* appearance */
 static const unsigned int borderpx    = 1;        /* border pixel of windows */
 static const unsigned int gappx       = 8;        /* gaps between windows */
@@ -70,16 +73,16 @@ static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { TERMINAL, NULL };
 
 /* applications per tag */
 static const Arg tagexec[] = {
 	{ .v = dmenucmd },
 	{ .v = termcmd },
-	{ .v = (const char*[]){ "st", "-e", "lf", NULL } },
-	{ .v = (const char*[]){ "st", "-e", "vim", NULL } },
-	{ .v = (const char*[]){ "st", "-e", "cmus", NULL } },
-	{ .v = (const char*[]){ "st", "-e", "baca", NULL } },
+	{ .v = (const char*[]){ TERMINAL, "-e", "lf", NULL } },
+	{ .v = (const char*[]){ TERMINAL, "-e", "vim", NULL } },
+	{ .v = (const char*[]){ TERMINAL, "-e", "cmus", NULL } },
+	{ .v = (const char*[]){ TERMINAL, "-e", "baca", NULL } },
 	{ .v = (const char*[]){ "nekoray", NULL } },
 	{ .v = (const char*[]){ "steam", NULL } },
 	{ .v = (const char*[]){ "firefox", NULL } }
@@ -90,7 +93,7 @@ static const Key keys[] = {
 	/* modifier                     key              function           argument */
 	{ MODKEY,                       XK_space,        spawn,             {.v = dmenucmd } },
 	{ MODKEY,                       XK_grave,        spawn,             {.v = termcmd } },
-	{ MODKEY,                       XK_Return,       spawn,             SHCMD("cmatrix") },
+	{ MODKEY,                       XK_Return,       spawn,             SHCMD(TERMINAL " -e cmatrix") },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1 } },
 	{ MODKEY,                       XK_k,            focusstack,        {.i = -1 } },
