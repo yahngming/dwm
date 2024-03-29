@@ -88,7 +88,7 @@ static const Arg tagexec[] = {
 /* keybidings */
 static const Key keys[] = {
 	/* modifier                     key              function        argument */
-	{ MODKEY,                       XK_space,        spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_grave,        spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,       spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,            togglebar,      {0} },
 	{ MODKEY,                       XK_j,            focusstack,     {.i = +1 } },
@@ -112,6 +112,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period,       tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_minus,        shiftview,      {.i = -1 } },
 	{ MODKEY,                       XK_equal,        shiftview,      {.i = +1 } },
+	{ MODKEY,			XK_Up,	         spawn,	         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
+	{ MODKEY,			XK_Down,         spawn,	         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
 	{ MODKEY,                       XK_F5,           xrdb,           {.v = NULL } },
 	{ MODKEY,                       XK_0,            view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,            tag,            {.ui = ~0 } },
