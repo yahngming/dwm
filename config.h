@@ -93,7 +93,6 @@ static const Key keys[] = {
 	/* modifier                     key              function           argument */
 	{ MODKEY,                       XK_space,        spawn,             {.v = dmenucmd } },
 	{ MODKEY,                       XK_grave,        spawn,             {.v = termcmd } },
-	{ MODKEY,                       XK_Return,       spawn,             SHCMD(TERMINAL " -e cmatrix") },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1 } },
 	{ MODKEY,                       XK_k,            focusstack,        {.i = -1 } },
@@ -110,8 +109,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Down,         setlayout,         {.v = &layouts[1]} },
 	{ MODKEY,                       XK_Up,           setlayout,         {.v = &layouts[2]} },
 	{ MODKEY,                       XK_Tab,          view,              {0} },
-	{ MODKEY,                       XK_backslash,    setlayout,         {0} },
-	{ MODKEY|ShiftMask,             XK_backslash,    togglefloating,    {0} },
+	{ MODKEY,                       XK_Return,       setlayout,         {0} },
+	{ MODKEY|ShiftMask,             XK_Return,       togglefloating,    {0} },
 	{ MODKEY,                       XK_comma,        focusmon,          {.i = -1 } },
 	{ MODKEY,                       XK_period,       focusmon,          {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,        tagmon,            {.i = -1 } },
