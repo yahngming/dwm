@@ -136,14 +136,6 @@ static const Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = (const char*[]){ "xpower", NULL } } },
-	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0 } },
-	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
-	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button2,        spawntag,       {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
@@ -152,4 +144,14 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button2,        killclient,     {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = (const char*[]){ "xpower", NULL } } },
+	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0 } },
+	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
+	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
+	{ ClkStatusText,        0,              Button4,        spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ ClkStatusText,        0,              Button5,        spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
+	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 };
