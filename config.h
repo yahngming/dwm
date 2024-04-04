@@ -154,4 +154,6 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkRootWin,           0,              Button2,        spawn,          {.v = (const char*[]){ "xwall", NULL } } },
+	{ ClkRootWin,           0,              Button3,        spawn,          {.v = (const char*[]){ "xpower", NULL } } },
 };
