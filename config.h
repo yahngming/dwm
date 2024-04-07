@@ -31,7 +31,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "󰣇", "", "", "󰎞", "󰥠", "", "󰔍", "", "󰖟" };
+static const char *tags[] = { "󰣇", "", "", "󰎞", "", "󰥠", "", "󰖟", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -81,11 +81,11 @@ static const Arg tagexec[] = {
 	{ .v = termcmd },
 	{ .v = (const char*[]){ TERMINAL, "-e", "lf", NULL } },
 	{ .v = (const char*[]){ TERMINAL, "-e", "vim", NULL } },
+	{ .v = (const char*[]){ TERMINAL, "-e", "bc", NULL } },
 	{ .v = (const char*[]){ TERMINAL, "-e", "cmus", NULL } },
-	{ .v = (const char*[]){ TERMINAL, "-e", "baca", NULL } },
-	{ .v = (const char*[]){ "emby-theater", NULL } },
 	{ .v = (const char*[]){ "steam", NULL } },
-	{ .v = (const char*[]){ "firefox", NULL } }
+	{ .v = (const char*[]){ "firefox", NULL } },
+	{ .v = dmenucmd }
 };
 
 /* keybidings */
