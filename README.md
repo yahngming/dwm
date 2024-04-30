@@ -5,6 +5,7 @@
 - alpha
 - bar height
 - clientmonoclesymbol
+- focusonclick
 - notitle
 - shiftview
 - spawntag (switch to tag before spawning)
