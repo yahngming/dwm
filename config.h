@@ -85,7 +85,7 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){ TERMINAL, "-e", "cmus", NULL } },
 	{ .v = (const char*[]){ "steam", NULL } },
 	{ .v = (const char*[]){ "firefox", NULL } },
-	{ .v = dmenucmd }
+	{ .v = (const char*[]){ "xpower", NULL } }
 };
 
 /* keybidings */
@@ -145,7 +145,7 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button2,        killclient,     {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = (const char*[]){ "xpower", NULL } } },
+	{ ClkLtSymbol,          0,              Button2,        killclient,     {0} },
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0 } },
 	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
 	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
