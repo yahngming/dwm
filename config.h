@@ -32,7 +32,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "󰣇", "", "", "󰎞", "", "󰥠", "", "󰖟", "" };
+static const char *tags[] = { "󰣇", "", "", "󰎞", "", "󰥠", "󰨜", "", "󰖟" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -84,9 +84,9 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){ TERMINAL, "-e", "vim", NULL } },
 	{ .v = (const char*[]){ TERMINAL, "-e", "bc", NULL } },
 	{ .v = (const char*[]){ TERMINAL, "-e", "cmus", NULL } },
+	{ .v = (const char*[]){ "emby-theater", NULL } },
 	{ .v = (const char*[]){ "steam", NULL } },
-	{ .v = (const char*[]){ "firefox", NULL } },
-	{ .v = (const char*[]){ "xpower", NULL } }
+	{ .v = (const char*[]){ "firefox", NULL } }
 };
 
 /* keybidings */
@@ -145,8 +145,8 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button2,        killclient,     {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button2,        killclient,     {0} },
+	{ ClkLtSymbol,          0,              Button1,        view,           {0} },
+	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = (const char*[]){ "xpower", NULL } } },
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0 } },
 	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
 	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
