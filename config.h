@@ -145,6 +145,8 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button2,        killclient,     {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkTagBar,            MODKEY,         Button4,        shiftview,      {.i = -1 } },
+	{ ClkTagBar,            MODKEY,         Button5,        shiftview,      {.i = +1 } },
 	{ ClkLtSymbol,          0,              Button1,        view,           {0} },
 	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = (const char*[]){ "xpower", NULL } } },
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0 } },
