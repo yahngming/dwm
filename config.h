@@ -2,6 +2,7 @@
 
 /* constants */
 #define TERMINAL "st"
+#define BROWSER "firefox"
 
 /* appearance */
 static const unsigned int borderpx    = 1;        /* border pixel of windows */
@@ -86,7 +87,7 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){ TERMINAL, "-e", "cmus", NULL } },
 	{ .v = (const char*[]){ "emby-theater", NULL } },
 	{ .v = (const char*[]){ "steam", NULL } },
-	SHCMD("firefox --profile ~/.config/firefox")
+	{ .v = (const char*[]){ BROWSER, NULL } }
 };
 
 /* keybidings */
