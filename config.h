@@ -87,7 +87,7 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){ TERMINAL, "-e", "cmus", NULL } },
 	{ .v = (const char*[]){ "emby-theater", NULL } },
 	{ .v = (const char*[]){ "steam", NULL } },
-	{ .v = (const char*[]){ BROWSER, NULL } }
+	{ .v = (const char*[]){ TERMINAL, "-e", "firefox --profile ~/.config/firefox", NULL } }
 };
 
 /* keybidings */
