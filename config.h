@@ -2,7 +2,7 @@
 
 /* constants */
 #define TERMINAL "st"
-#define BROWSER "firefox"
+#define BROWSER "firefox --profile ~/.config/firefox"
 
 /* appearance */
 static const unsigned int borderpx    = 1;        /* border pixel of windows */
