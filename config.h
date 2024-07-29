@@ -117,12 +117,13 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period,       focusmon,          {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,        tagmon,            {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,       tagmon,            {.i = +1 } },
-	{ MODKEY,			XK_minus,        spawn,	            SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
-	{ MODKEY,			XK_equal,        spawn,	            SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
-	{ MODKEY,			XK_BackSpace,    spawn,	            SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
+	{ MODKEY,                       XK_minus,        spawn,	            SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ MODKEY,                       XK_equal,        spawn,	            SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
+	{ MODKEY,                       XK_BackSpace,    spawn,	            SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL } },
 	{ MODKEY,                       XK_0,            view,              {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,            tag,               {.ui = ~0 } },
+	{ 0,                            XK_Print,        spawn,             SHCMD("maim --hidecursor --select $(date '+%y%m%d-%H%M-%S').png") },
 	TAGKEYS(                        XK_1,                               0)
 	TAGKEYS(                        XK_2,                               1)
 	TAGKEYS(                        XK_3,                               2)
