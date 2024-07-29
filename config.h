@@ -105,6 +105,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_o,            zoom,              {0} },
 	{ MODKEY,                       XK_q,            killclient,        {0} },
 	{ MODKEY|ShiftMask,             XK_q,            spawn,             {.v = (const char*[]){ "xpower", NULL } } },
+	{ MODKEY,                       XK_s,            spawn,             SHCMD("maim --hidecursor --select ~/Pictures/screenshots/$(date '+%Y-%m-%d@%H:%M:%S').png | xclip -selection clipboard -target image/png") },
 	{ MODKEY,                       XK_Left,         shiftview,         {.i = -1 } },
 	{ MODKEY,                       XK_Right,        shiftview,         {.i = +1 } },
 	{ MODKEY,                       XK_Down,         setlayout,         {.v = &layouts[0]} },
@@ -123,7 +124,6 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL } },
 	{ MODKEY,                       XK_0,            view,              {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,            tag,               {.ui = ~0 } },
-	{ 0,                            XK_Print,        spawn,             SHCMD("maim --hidecursor --select ~/Pictures/screenshots/$(date '+%Y-%m-%d@%H:%M:%S').png | xclip -selection clipboard -target image/png") },
 	TAGKEYS(                        XK_1,                               0)
 	TAGKEYS(                        XK_2,                               1)
 	TAGKEYS(                        XK_3,                               2)
