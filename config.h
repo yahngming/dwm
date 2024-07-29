@@ -123,7 +123,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL } },
 	{ MODKEY,                       XK_0,            view,              {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,            tag,               {.ui = ~0 } },
-	{ 0,                            XK_Print,        spawn,             SHCMD("maim --hidecursor --select $(date '+%y%m%d-%H%M-%S').png") },
+	{ 0,                            XK_Print,        spawn,             SHCMD("maim --hidecursor --select $(date '+%y%m%d-%H%M-%S').png | xclip -selection clipboard -target image/png") },
 	TAGKEYS(                        XK_1,                               0)
 	TAGKEYS(                        XK_2,                               1)
 	TAGKEYS(                        XK_3,                               2)
