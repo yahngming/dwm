@@ -93,7 +93,7 @@ static const Arg tagexec[] = {
 /* keybidings */
 static const Key keys[] = {
 	/* modifier                     key              function           argument */
-	{ MODKEY,                       XK_space,        spawn,             {.v = dmenucmd } },
+	{ MODKEY,                       XK_Escape,       spawn,             {.v = dmenucmd } },
 	{ MODKEY,                       XK_grave,        spawn,             {.v = termcmd } },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1 } },
@@ -154,11 +154,12 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0 } },
 	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
 	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
+	{ ClkStatusText,        0,              Button2,        spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
 	{ ClkStatusText,        0,              Button4,        spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
 	{ ClkStatusText,        0,              Button5,        spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkRootWin,           0,              Button2,        spawn,          {.v = (const char*[]){ "xwall", NULL } } },
-	{ ClkRootWin,           0,              Button3,        togglebar,      {0} },
+	{ ClkRootWin,           0,              Button2,        togglebar,      {0} },
+	{ ClkRootWin,           0,              Button3,        spawn,          {.v = (const char*[]){ "xwall", NULL } } },
 };
