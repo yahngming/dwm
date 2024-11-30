@@ -93,8 +93,8 @@ static const Arg tagexec[] = {
 /* keybidings */
 static const Key keys[] = {
 	/* modifier                     key              function           argument */
-	{ MODKEY,                       XK_Escape,       spawn,             {.v = dmenucmd } },
-	{ MODKEY,                       XK_grave,        spawn,             {.v = termcmd } },
+	{ MODKEY,                       XK_space,        spawntag,          {.ui = 1 << 0 } },
+	{ MODKEY,                       XK_grave,        spawn,             {.ui = 1 << 1 } },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1 } },
 	{ MODKEY,                       XK_k,            focusstack,        {.i = -1 } },
