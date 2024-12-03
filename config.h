@@ -33,7 +33,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "󰣇", "", "", "󰎞", "", "󰥠", "󰇮", "󰖺", "󰖟" };
+static const char *tags[] = { "󰣇", "", "", "󰎞", "", "󰥠", "󰇮", "󰎕", "󰖺", "󰖟" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -86,6 +86,7 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){ TERMINAL, "-e", "bc", NULL } },
 	{ .v = (const char*[]){ TERMINAL, "-e", "cmus", NULL } },
 	{ .v = (const char*[]){ TERMINAL, "-e", "aerc", NULL } },
+	{ .v = (const char*[]){ TERMINAL, "-e", "newsraft", NULL } },
 	{ .v = (const char*[]){ "steam", NULL } },
 	SHCMD(BROWSER)
 };
