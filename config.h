@@ -93,8 +93,8 @@ static const Arg tagexec[] = {
 /* keybidings */
 static const Key keys[] = {
 	/* modifier                     key              function           argument */
-	{ MODKEY,                       XK_space,        spawntag,          {.ui = 1 << 0 } },
-	{ MODKEY,                       XK_grave,        spawntag,          {.ui = 1 << 1 } },
+	{ MODKEY,                       XK_Escape,       spawntag,          {.ui = 1 << 0 } },
+	{ MODKEY,                       XK_grave,        spawntag,          {.ui = 1 << 0 } },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1 } },
 	{ MODKEY,                       XK_k,            focusstack,        {.i = -1 } },
@@ -124,15 +124,15 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL } },
 	{ MODKEY,                       XK_0,            view,              {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,            tag,               {.ui = ~0 } },
-	TAGKEYS(                        XK_1,                               0)
-	TAGKEYS(                        XK_2,                               1)
-	TAGKEYS(                        XK_3,                               2)
-	TAGKEYS(                        XK_4,                               3)
-	TAGKEYS(                        XK_5,                               4)
-	TAGKEYS(                        XK_6,                               5)
-	TAGKEYS(                        XK_7,                               6)
-	TAGKEYS(                        XK_8,                               7)
-	TAGKEYS(                        XK_9,                               8)
+	TAGKEYS(                        XK_1,                               1)
+	TAGKEYS(                        XK_2,                               2)
+	TAGKEYS(                        XK_3,                               3)
+	TAGKEYS(                        XK_4,                               4)
+	TAGKEYS(                        XK_5,                               5)
+	TAGKEYS(                        XK_6,                               6)
+	TAGKEYS(                        XK_7,                               7)
+	TAGKEYS(                        XK_8,                               8)
+	TAGKEYS(                        XK_9,                               9)
 };
 
 /* button definitions */
