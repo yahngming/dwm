@@ -102,7 +102,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_BackSpace,    spawn,	            SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
 	{ MODKEY,                       XK_Tab,          view,              {0} },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
-	{ MODKEY,                       XK_d,            spawn,             {.v = (const char*[]){ "dmenu-translate", NULL } } },
+	{ MODKEY,                       XK_d,            spawn,             {.v = (const char*[]){ "transmenu", NULL } } },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1 } },
 	{ MODKEY,                       XK_k,            focusstack,        {.i = -1 } },
 	{ MODKEY,                       XK_h,            setmfact,          {.f = -0.05} },
