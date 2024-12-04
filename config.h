@@ -96,7 +96,6 @@ static const Key keys[] = {
 	/* modifier                     key              function           argument */
 	{ MODKEY,                       XK_Escape,       spawntag,          {.ui = 1 << 0 } },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL } },
-	{ MODKEY,                       XK_grave,        spawntag,          {.ui = 1 << 0 } },
 	{ MODKEY,                       XK_minus,        spawn,	            SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
 	{ MODKEY,                       XK_equal,        spawn,	            SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
 	{ MODKEY,                       XK_BackSpace,    spawn,	            SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
@@ -127,6 +126,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,        tagmon,            {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,       tagmon,            {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_0,            tag,               {.ui = ~0 } },
+	TAGKEYS(                        XK_grave,                           0)
 	TAGKEYS(                        XK_1,                               1)
 	TAGKEYS(                        XK_2,                               2)
 	TAGKEYS(                        XK_3,                               3)
