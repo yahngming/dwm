@@ -1330,7 +1330,6 @@ resizeclient(Client *c, int x, int y, int w, int h)
 void
 resizemouse(const Arg *arg)
 {
-	setlayout(arg);
 	int ocx, ocy, nw, nh;
 	Client *c;
 	Monitor *m;
