@@ -161,7 +161,7 @@ static const Button buttons[] = {
 	{ ClkStatusText,        0,              Button5,        spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {.v = &layouts[2]} },
+	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkRootWin,           0,              Button2,        togglebar,      {0} },
 	{ ClkRootWin,           0,              Button3,        spawn,          {.v = (const char*[]){ "wallpaper", NULL } } },
 };
