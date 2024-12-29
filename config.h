@@ -118,6 +118,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_0,            view,              {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_j,            incnmaster,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,            incnmaster,        {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_m,            spawn,             {.v = (const char*[]){ "dispmenu", NULL } } },
 	{ MODKEY|ShiftMask,             XK_p,            spawn,             {.v = (const char*[]){ "passmenu", NULL } } },
 	{ MODKEY|ShiftMask,             XK_q,            spawn,             {.v = (const char*[]){ "powermenu", NULL } } },
 	{ MODKEY|ShiftMask,             XK_s,            spawn,             SHCMD("mkdir -p ~/Pictures/screenshots && maim --hidecursor --select ~/Pictures/screenshots/$(date '+%Y-%m-%d@%H:%M:%S').png | xclip -selection clipboard -target image/png") },
