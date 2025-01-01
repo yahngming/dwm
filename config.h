@@ -96,7 +96,6 @@ static const Arg tagexec[] = {
 /* keybidings */
 static const Key keys[] = {
 	/* modifier                     key              function           argument */
-	{ MODKEY,                       XK_Escape,       spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL} },
 	{ MODKEY,                       XK_minus,        spawn,	            {.v = (const char*[]){"voldown", NULL}} },
 	{ MODKEY,                       XK_equal,        spawn,	            {.v = (const char*[]){"volup", NULL}} },
@@ -129,6 +128,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,        tagmon,            {.i = -1} },
 	{ MODKEY|ShiftMask,             XK_period,       tagmon,            {.i = +1} },
 	{ MODKEY|ShiftMask,             XK_0,            tag,               {.ui = ~0} },
+	TAGKEYS(                        XK_Escape,                          0)
 	TAGKEYS(                        XK_grave,                           0)
 	TAGKEYS(                        XK_1,                               1)
 	TAGKEYS(                        XK_2,                               2)
