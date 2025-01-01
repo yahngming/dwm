@@ -74,8 +74,10 @@ static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *actioncmd[] = { "actions", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
+static const char *transcmd[] = { "translate", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 
 /* applications per tag */
 static const Arg tagexec[] = {
@@ -100,9 +102,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_equal,        spawn,	            SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
 	{ MODKEY,                       XK_BackSpace,    spawn,	            SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
 	{ MODKEY,                       XK_Tab,          view,              {0} },
-	{ MODKEY,                       XK_a,            spawn,             {.v = (const char*[]){ "actions", NULL } } },
+	{ MODKEY,                       XK_a,            spawn,             { .v = actioncmd },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
-	{ MODKEY,                       XK_d,            spawn,             {.v = (const char*[]){ "translate", NULL } } },
+	{ MODKEY,                       XK_d,            spawn,             { .v = transcmd },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1 } },
 	{ MODKEY,                       XK_k,            focusstack,        {.i = -1 } },
 	{ MODKEY,                       XK_h,            setmfact,          {.f = -0.05} },
