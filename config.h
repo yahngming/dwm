@@ -109,7 +109,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_l,            setmfact,          {.f = +0.05} },
 	{ MODKEY,                       XK_o,            zoom,              {0} },
 	{ MODKEY,                       XK_q,            killclient,        {0} },
-	{ MODKEY,                       XK_s,            spawntag,          {0} },
+	{ MODKEY,                       XK_s,            spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_Return,       setlayout,         {0} },
 	{ MODKEY,                       XK_comma,        focusmon,          {.i = -1 } },
 	{ MODKEY,                       XK_period,       focusmon,          {.i = +1 } },
