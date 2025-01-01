@@ -74,10 +74,10 @@ static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *actcmd[] = { "dmenu_act", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *actcmd[] = { "actionmenu", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *runcmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
-static const char *transcmd[] = { "dmenu_trans", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *transcmd[] = { "transmenu", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 
 /* applications per tag */
 static const Arg tagexec[] = {
@@ -98,9 +98,9 @@ static const Key keys[] = {
 	/* modifier                     key              function           argument */
 	{ MODKEY,                       XK_Escape,       spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL} },
-	{ MODKEY,                       XK_minus,        spawn,	            SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
-	{ MODKEY,                       XK_equal,        spawn,	            SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
-	{ MODKEY,                       XK_BackSpace,    spawn,	            SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
+	{ MODKEY,                       XK_minus,        spawn,	            {.v = (const char*[]){"voldown", NULL}} },
+	{ MODKEY,                       XK_equal,        spawn,	            {.v = (const char*[]){"volup", NULL}} },
+	{ MODKEY,                       XK_BackSpace,    spawn,	            {.v = (const char*[]){"mute", NULL}} },
 	{ MODKEY,                       XK_Tab,          view,              {0} },
 	{ MODKEY,                       XK_a,            spawn,             {.v = actcmd} },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
@@ -124,7 +124,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_0,            view,              {.ui = ~0} },
 	{ MODKEY|ShiftMask,             XK_j,            incnmaster,        {.i = +1} },
 	{ MODKEY|ShiftMask,             XK_k,            incnmaster,        {.i = -1} },
-	{ MODKEY|ShiftMask,             XK_s,            spawn,             SHCMD("mkdir -p ~/Pictures/screenshots && maim --hidecursor --select ~/Pictures/screenshots/$(date '+%Y-%m-%d@%H:%M:%S').png | xclip -selection clipboard -target image/png") },
+	{ MODKEY|ShiftMask,             XK_q,            spawn,             {.v = (const char*[]){"powermenu", NULL}} },
+	{ MODKEY|ShiftMask,             XK_s,            spawn,             {.v = (const char*[]){"screenshot", NULL}} },
 	{ MODKEY|ShiftMask,             XK_Return,       togglefloating,    {0} },
 	{ MODKEY|ShiftMask,             XK_comma,        tagmon,            {.i = -1} },
 	{ MODKEY|ShiftMask,             XK_period,       tagmon,            {.i = +1} },
@@ -160,9 +161,9 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0} },
 	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
 	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
-	{ ClkStatusText,        0,              Button2,        spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
-	{ ClkStatusText,        0,              Button4,        spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
-	{ ClkStatusText,        0,              Button5,        spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = (const char*[]){"mute", NULL}} },
+	{ ClkStatusText,        0,              Button4,        spawn,          {.v = (const char*[]){"volup", NULL}} },
+	{ ClkStatusText,        0,              Button5,        spawn,          {.v = (const char*[]){"voldown", NULL}} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
