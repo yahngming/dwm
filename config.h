@@ -74,14 +74,14 @@ static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *actioncmd[] = { "actions", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *actcmd[] = { "dmenu_act", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *runcmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
-static const char *transcmd[] = { "translate", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *transcmd[] = { "dmenu_trans", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 
 /* applications per tag */
 static const Arg tagexec[] = {
-	{ .v = dmenucmd },
+	{ .v = runcmd },
 	{ .v = termcmd },
 	{ .v = (const char*[]){ TERMINAL, "-e", "lf", NULL } },
 	{ .v = (const char*[]){ TERMINAL, "-e", "vim", NULL } },
@@ -102,9 +102,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_equal,        spawn,	            SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
 	{ MODKEY,                       XK_BackSpace,    spawn,	            SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
 	{ MODKEY,                       XK_Tab,          view,              {0} },
-	{ MODKEY,                       XK_a,            spawn,             {.v = actioncmd} },
+	{ MODKEY,                       XK_a,            spawn,             {.v = actcmd} },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
+	{ MODKEY,                       XK_c,            spawntag,          {.ui = 1 << 1} },
 	{ MODKEY,                       XK_d,            spawn,             {.v = transcmd} },
+	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 2} },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1} },
 	{ MODKEY,                       XK_k,            focusstack,        {.i = -1} },
 	{ MODKEY,                       XK_h,            setmfact,          {.f = -0.05} },
@@ -154,7 +156,7 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button4,        shiftview,      {.i = -1} },
 	{ ClkTagBar,            MODKEY,         Button5,        shiftview,      {.i = +1} },
 	{ ClkLtSymbol,          0,              Button1,        view,           {0} },
-	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = (const char*[]){"actions", NULL}} },
+	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = actcmd} },
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0} },
 	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
 	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
