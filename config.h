@@ -74,8 +74,8 @@ static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *actcmd[] = { "actionmenu", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *runcmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *setcmd[] = { "settingsmenu", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *transcmd[] = { "transmenu", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 
@@ -101,18 +101,25 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_equal,        spawn,	            {.v = (const char*[]){"volup", NULL}} },
 	{ MODKEY,                       XK_BackSpace,    spawn,	            {.v = (const char*[]){"togglemute", NULL}} },
 	{ MODKEY,                       XK_Tab,          view,              {0} },
-	{ MODKEY,                       XK_a,            spawn,             {.v = actcmd} },
+	{ MODKEY,                       XK_a,            spawntag,          {.ui = 1 << 1} },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
-	{ MODKEY,                       XK_c,            spawntag,          {.ui = 1 << 1} },
+	{ MODKEY,                       XK_c,            spawntag,          {.ui = 1 << 4} },
 	{ MODKEY,                       XK_d,            spawn,             {.v = transcmd} },
-	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 2} },
+	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 3} },
+	{ MODKEY,                       XK_f,            spawntag,          {.ui = 1 << 2} },
+	{ MODKEY,                       XK_g,            spawntag,          {.ui = 1 << 8} },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1} },
 	{ MODKEY,                       XK_k,            focusstack,        {.i = -1} },
 	{ MODKEY,                       XK_h,            setmfact,          {.f = -0.05} },
+	{ MODKEY,                       XK_i,            spawn,             {.v = setcmd} },
 	{ MODKEY,                       XK_l,            setmfact,          {.f = +0.05} },
+	{ MODKEY,                       XK_m,            spawntag,          {.ui = 1 << 6} },
+	{ MODKEY,                       XK_n,            spawntag,          {.ui = 1 << 7} },
 	{ MODKEY,                       XK_o,            zoom,              {0} },
+	{ MODKEY,                       XK_p,            spawntag,          {.ui = 1 << 5} },
 	{ MODKEY,                       XK_q,            killclient,        {0} },
 	{ MODKEY,                       XK_s,            spawntag,          {.ui = 1 << 0} },
+	{ MODKEY,                       XK_w,            spawntag,          {.ui = 1 << 9} },
 	{ MODKEY,                       XK_Return,       setlayout,         {0} },
 	{ MODKEY,                       XK_comma,        focusmon,          {.i = -1} },
 	{ MODKEY,                       XK_period,       focusmon,          {.i = +1} },
