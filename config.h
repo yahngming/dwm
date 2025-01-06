@@ -74,6 +74,7 @@ static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *pwrcmd[] = { "powermenu", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *runcmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *setcmd[] = { "settings", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
@@ -120,6 +121,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_q,            killclient,        {0} },
 	{ MODKEY,                       XK_s,            spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_w,            spawntag,          {.ui = 1 << 9} },
+	{ MODKEY,                       XK_x,            spawntag,          {.v = (const char*[]){"btop", NULL}} },
 	{ MODKEY,                       XK_Return,       setlayout,         {0} },
 	{ MODKEY,                       XK_comma,        focusmon,          {.i = -1} },
 	{ MODKEY,                       XK_period,       focusmon,          {.i = +1} },
@@ -163,7 +165,7 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button4,        shiftview,      {.i = -1} },
 	{ ClkTagBar,            MODKEY,         Button5,        shiftview,      {.i = +1} },
 	{ ClkLtSymbol,          0,              Button1,        view,           {0} },
-	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = setcmd} },
+	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = pwrcmd} },
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0} },
 	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
 	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
@@ -173,6 +175,5 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkRootWin,           0,              Button2,        spawn,          {.v = (const char*[]){"wallpaper", NULL}} },
 	{ ClkRootWin,           0,              Button3,        togglebar,      {0} },
 };
