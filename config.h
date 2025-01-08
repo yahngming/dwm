@@ -74,11 +74,8 @@ static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *pwrcmd[] = { "powermenu", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *runcmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *setcmd[] = { "settings", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
-static const char *transcmd[] = { "transmenu", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 
 /* applications per tag */
 static const Arg tagexec[] = {
@@ -105,14 +102,14 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_a,            spawntag,          {.ui = 1 << 1} },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
 	{ MODKEY,                       XK_c,            spawntag,          {.ui = 1 << 4} },
-	{ MODKEY,                       XK_d,            spawn,             {.v = transcmd} },
-	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 3} },
-	{ MODKEY,                       XK_f,            spawntag,          {.ui = 1 << 2} },
+	{ MODKEY,                       XK_d,            spawn,             {.v = (const char*[]){"transmenu", NULL}} },
+	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 2} },
+	{ MODKEY,                       XK_f,            togglefloating,    {0} },
 	{ MODKEY,                       XK_g,            spawntag,          {.ui = 1 << 8} },
 	{ MODKEY,                       XK_j,            focusstack,        {.i = +1} },
 	{ MODKEY,                       XK_k,            focusstack,        {.i = -1} },
 	{ MODKEY,                       XK_h,            setmfact,          {.f = -0.05} },
-	{ MODKEY,                       XK_i,            spawn,             {.v = setcmd} },
+	{ MODKEY,                       XK_i,            spawn,             {.v = (const char*[]){"settings", NULL}} },
 	{ MODKEY,                       XK_l,            setmfact,          {.f = +0.05} },
 	{ MODKEY,                       XK_m,            spawntag,          {.ui = 1 << 6} },
 	{ MODKEY,                       XK_n,            spawntag,          {.ui = 1 << 7} },
@@ -121,8 +118,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_q,            killclient,        {0} },
 	{ MODKEY,                       XK_r,            spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_s,            spawntag,          {.v = (const char*[]){"screenshot", NULL}} },
+	{ MODKEY,                       XK_v,            spawntag,          {.ui = 1 << 3} },
 	{ MODKEY,                       XK_w,            spawntag,          {.ui = 1 << 9} },
-	{ MODKEY,                       XK_z,            spawntag,          {.v = (const char*[]){TERMINAL, "-e", "btop", NULL}} },
+	{ MODKEY,                       XK_x,            spawntag,          {.v = (const char*[]){TERMINAL, "-e", "btop", NULL}} },
 	{ MODKEY,                       XK_Return,       setlayout,         {0} },
 	{ MODKEY,                       XK_comma,        focusmon,          {.i = -1} },
 	{ MODKEY,                       XK_period,       focusmon,          {.i = +1} },
@@ -165,7 +163,7 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button4,        shiftview,      {.i = -1} },
 	{ ClkTagBar,            MODKEY,         Button5,        shiftview,      {.i = +1} },
 	{ ClkLtSymbol,          0,              Button1,        view,           {0} },
-	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = pwrcmd} },
+	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = (const char*[]){"powermenu", NULL}} },
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0} },
 	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
 	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
