@@ -1,8 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
 /* constants */
-#define TERMINAL "st"
 #define BROWSER "firefox --profile ~/.config/firefox"
+#define TERMINAL "st"
+#define TUI "tui"
 
 /* appearance */
 static const unsigned int borderpx    = 1;        /* border pixel of windows */
@@ -81,12 +82,12 @@ static const char *termcmd[]  = { TERMINAL, NULL };
 static const Arg tagexec[] = {
 	{ .v = runcmd },
 	{ .v = termcmd },
-	{ .v = (const char*[]){TERMINAL, "-e", "lf", NULL} },
-	{ .v = (const char*[]){TERMINAL, "-e", "vim", NULL} },
-	{ .v = (const char*[]){TERMINAL, "-e", "bc", NULL} },
-	{ .v = (const char*[]){TERMINAL, "-e", "cmus", NULL} },
-	{ .v = (const char*[]){TERMINAL, "-e", "aerc", NULL} },
-	{ .v = (const char*[]){TERMINAL, "-e", "newsraft", NULL} },
+	{ .v = (const char*[]){TERMINAL, "-e", TUI, "lf", NULL} },
+	{ .v = (const char*[]){TERMINAL, "-e", TUI, "vim", NULL} },
+	{ .v = (const char*[]){TERMINAL, "-e", TUI, "bc", NULL} },
+	{ .v = (const char*[]){TERMINAL, "-e", TUI, "cmus", NULL} },
+	{ .v = (const char*[]){TERMINAL, "-e", TUI, "aerc", NULL} },
+	{ .v = (const char*[]){TERMINAL, "-e", TUI, "newsraft", NULL} },
 	{ .v = (const char*[]){"steam", NULL} },
 	SHCMD(BROWSER)
 };
@@ -111,7 +112,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,            spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_s,            spawn,             {.v = (const char*[]){"screenshot", NULL}} },
 	{ MODKEY,                       XK_w,            spawntag,          {.ui = 1 << 9} },
-	{ MODKEY,                       XK_x,            spawn,             {.v = (const char*[]){TERMINAL, "-e", "btop", NULL}} },
+	{ MODKEY,                       XK_x,            spawn,             {.v = (const char*[]){TERMINAL, "-e", TUI, "btop", NULL}} },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL} },
 	{ MODKEY,                       XK_minus,        spawn,	            {.v = (const char*[]){"voldown", NULL}} },
 	{ MODKEY,                       XK_equal,        spawn,	            {.v = (const char*[]){"volup", NULL}} },
@@ -162,7 +163,6 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0} },
 	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
 	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = (const char*[]){"refresh", NULL}} },
 	{ ClkStatusText,        0,              Button3,        spawn,          {.v = (const char*[]){"togglemute", NULL}} },
 	{ ClkStatusText,        0,              Button4,        spawn,          {.v = (const char*[]){"volup", NULL}} },
 	{ ClkStatusText,        0,              Button5,        spawn,          {.v = (const char*[]){"voldown", NULL}} },
