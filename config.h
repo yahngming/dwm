@@ -103,7 +103,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_f,            spawntag,          {.ui = 1 << 2} },
 	{ MODKEY,                       XK_g,            spawntag,          {.ui = 1 << 8} },
 	{ MODKEY,                       XK_i,            spawn,             {.v = (const char*[]){"settings", NULL}} },
-	{ MODKEY,                       XK_l,            spawn,             {.v = (const char*[]){"loginctl", "lock-session", NULL}} },
+	{ MODKEY,                       XK_l,            spawn,             {.v = (const char*[]){"powermenu", NULL}} },
 	{ MODKEY,                       XK_m,            spawntag,          {.ui = 1 << 6} },
 	{ MODKEY,                       XK_n,            spawntag,          {.ui = 1 << 7} },
 	{ MODKEY,                       XK_o,            zoom,              {0} },
