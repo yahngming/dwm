@@ -163,6 +163,7 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0} },
 	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
 	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = (const char*[]){"settings", NULL}} },
 	{ ClkStatusText,        0,              Button3,        spawn,          {.v = (const char*[]){"togglemute", NULL}} },
 	{ ClkStatusText,        0,              Button4,        spawn,          {.v = (const char*[]){"volup", NULL}} },
 	{ ClkStatusText,        0,              Button5,        spawn,          {.v = (const char*[]){"voldown", NULL}} },
