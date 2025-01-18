@@ -82,12 +82,12 @@ static const char *termcmd[]  = { TERMINAL, NULL };
 static const Arg tagexec[] = {
 	{ .v = runcmd },
 	{ .v = termcmd },
-	{ .v = (const char*[]){TERMINAL, "-e", TUI, "lf", NULL} },
-	{ .v = (const char*[]){TERMINAL, "-e", TUI, "vim", NULL} },
-	{ .v = (const char*[]){TERMINAL, "-e", TUI, "bc", NULL} },
-	{ .v = (const char*[]){TERMINAL, "-e", TUI, "cmus", NULL} },
-	{ .v = (const char*[]){TERMINAL, "-e", TUI, "aerc", NULL} },
-	{ .v = (const char*[]){TERMINAL, "-e", TUI, "newsraft", NULL} },
+	{ .v = (const char*[]){TUI, "lf", NULL} },
+	{ .v = (const char*[]){TUI, "vim", NULL} },
+	{ .v = (const char*[]){TUI, "bc", NULL} },
+	{ .v = (const char*[]){TUI, "cmus", NULL} },
+	{ .v = (const char*[]){TUI, "aerc", NULL} },
+	{ .v = (const char*[]){TUI, "newsraft", NULL} },
 	{ .v = (const char*[]){"steam", NULL} },
 	SHCMD(BROWSER)
 };
@@ -112,7 +112,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,            spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_s,            spawn,             {.v = (const char*[]){"screenshot", NULL}} },
 	{ MODKEY,                       XK_w,            spawntag,          {.ui = 1 << 9} },
-	{ MODKEY,                       XK_x,            spawn,             {.v = (const char*[]){TERMINAL, "-e", TUI, "btop", NULL}} },
+	{ MODKEY,                       XK_x,            spawn,             {.v = (const char*[]){TUI, "btop", NULL}} },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL} },
 	{ MODKEY,                       XK_minus,        spawn,	            {.v = (const char*[]){"voldown", NULL}} },
 	{ MODKEY,                       XK_equal,        spawn,	            {.v = (const char*[]){"volup", NULL}} },
