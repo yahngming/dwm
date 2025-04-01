@@ -1,10 +1,5 @@
 /* See LICENSE file for copyright and license details. */
 
-/* constants */
-#define BROWSER "browser"
-#define TERMINAL "$TERMINAL"
-#define TUI "tui"
-
 /* appearance */
 static const unsigned int borderpx    = 1;        /* border pixel of windows */
 static const unsigned int gappx       = 8;        /* gaps between windows */
@@ -76,20 +71,20 @@ static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *runcmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { TERMINAL, NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 /* applications per tag */
 static const Arg tagexec[] = {
 	{ .v = runcmd },
 	{ .v = termcmd },
-	{ .v = (const char*[]){TUI, "lf", NULL} },
-	{ .v = (const char*[]){TUI, "vim", NULL} },
-	{ .v = (const char*[]){TUI, "bc", NULL} },
-	{ .v = (const char*[]){TUI, "cmus", NULL} },
-	{ .v = (const char*[]){TUI, "aerc", NULL} },
-	{ .v = (const char*[]){TUI, "newsraft", NULL} },
-	{ .v = (const char*[]){"steam", NULL} },
-	SHCMD("$BROWSER")
+	{ .v = (const char*[]){"tui", "lf", NULL} },
+	{ .v = (const char*[]){"tui", "vim", NULL} },
+	{ .v = (const char*[]){"tui", "bc", NULL} },
+	{ .v = (const char*[]){"tui", "cmus", NULL} },
+	{ .v = (const char*[]){"tui", "aerc", NULL} },
+	{ .v = (const char*[]){"tui", "newsraft", NULL} },
+	SHCMD("steam"),
+	SHCMD("browser")
 };
 
 /* keybidings */
@@ -112,7 +107,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,            spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_s,            spawn,             {.v = (const char*[]){"screenshot", NULL}} },
 	{ MODKEY,                       XK_w,            spawntag,          {.ui = 1 << 9} },
-	{ MODKEY,                       XK_x,            spawn,             {.v = (const char*[]){TUI, "btop", NULL}} },
+	{ MODKEY,                       XK_x,            spawn,             {.v = (const char*[]){"tui", "btop", NULL}} },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL} },
 	{ MODKEY,                       XK_minus,        spawn,	            {.v = (const char*[]){"voldown", NULL}} },
 	{ MODKEY,                       XK_equal,        spawn,	            {.v = (const char*[]){"volup", NULL}} },
