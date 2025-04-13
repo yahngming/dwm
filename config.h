@@ -170,6 +170,7 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkClientWin,         MODKEY,         Button4,        shiftview,      {.i = -1} },
 	{ ClkClientWin,         MODKEY,         Button5,        shiftview,      {.i = +1} },
+	{ ClkRootWin,           0,              Button2,        spawn,          {.v = (const char*[]){"wallpaper", NULL}} },
 	{ ClkRootWin,           0,              Button3,        togglebar,      {0} },
 	{ ClkRootWin,           MODKEY,         Button4,        shiftview,      {.i = -1} },
 	{ ClkRootWin,           MODKEY,         Button5,        shiftview,      {.i = +1} },
