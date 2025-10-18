@@ -106,6 +106,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_q,            killclient,        {0} },
 	{ MODKEY,                       XK_r,            spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_s,            spawn,             {.v = (const char*[]){"screenshot", NULL}} },
+	{ MODKEY,                       XK_v,            spawn,             {.v = (const char*[]){"clipmenu", NULL}} },
 	{ MODKEY,                       XK_w,            spawntag,          {.ui = 1 << 9} },
 	{ MODKEY,                       XK_x,            spawn,             {.v = (const char*[]){"tui", "btop", NULL}} },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL} },
