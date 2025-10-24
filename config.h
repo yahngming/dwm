@@ -2,12 +2,12 @@
 
 /* appearance */
 static const unsigned int borderpx    = 1;        /* border pixel of windows */
-static const unsigned int gappx       = 8;        /* gaps between windows */
+static const unsigned int gappx       = 4;        /* gaps between windows */
 static const unsigned int snap        = 12;       /* snap pixel */
 static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 0;        /* 0 means bottom bar */
 static const int barspacing           = 16;       /* spacing between bar and fonts */
-static const int focusonwheel         = 0;        /* 0 means only focus on click*/
+static const int focusonwheel         = 1;        /* 0 means only focus on click*/
 static const char *fonts[]            = { "symbol:size=32" };
 static char normbgcolor[]             = "#222222";
 static char normbordercolor[]         = "#444444";
@@ -44,7 +44,7 @@ static const Rule rules[] = {
 static const float mfact        = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster        = 1;    /* number of clients in master area */
 static const int resizehints    = 0;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
+static const int lockfullscreen = 0;    /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol    arrange function */
