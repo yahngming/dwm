@@ -71,7 +71,7 @@ static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *runcmd[] = { "launcher", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "$TERMINAL", NULL };
 
 /* applications per tag */
 static const Arg tagexec[] = {
