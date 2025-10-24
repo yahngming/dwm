@@ -6,7 +6,7 @@ static const unsigned int gappx       = 4;        /* gaps between windows */
 static const unsigned int snap        = 8;        /* snap pixel */
 static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 0;        /* 0 means bottom bar */
-static const int barspacing           = 8;        /* spacing between bar and fonts */
+static const int barspacing           = 16;       /* spacing between bar and fonts */
 static const int focusonwheel         = 1;        /* 0 means only focus on click*/
 static const char *fonts[]            = { "symbol:size=16" };
 static char normbgcolor[]             = "#222222";
@@ -71,7 +71,7 @@ static const char *monocles[] = { "➀", "➁", "➂", "➃", "➄", "➅", "➆
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *runcmd[] = { "launcher", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "$TERMINAL", NULL };
+static const char *termcmd[]  = { "terminal", NULL };
 
 /* applications per tag */
 static const Arg tagexec[] = {
