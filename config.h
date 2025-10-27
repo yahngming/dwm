@@ -97,6 +97,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 3} },
 	{ MODKEY,                       XK_f,            spawntag,          {.ui = 1 << 2} },
 	{ MODKEY,                       XK_g,            spawntag,          {.ui = 1 << 8} },
+	{ MODKEY,                       XK_h,            spawn,             {.v = (const char*[]){"aboutmenu", NULL}} },
 	{ MODKEY,                       XK_i,            spawn,             {.v = (const char*[]){"settings", NULL}} },
 	{ MODKEY,                       XK_l,            spawn,             {.v = (const char*[]){"powermenu", NULL}} },
 	{ MODKEY,                       XK_m,            spawntag,          {.ui = 1 << 6} },
