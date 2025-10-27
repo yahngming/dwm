@@ -91,7 +91,7 @@ static const Arg tagexec[] = {
 static const Key keys[] = {
 	/* modifier                     key              function           argument */
 	{ MODKEY,                       XK_a,            spawntag,          {.ui = 1 << 1} },
-	{ MODKEY,                       XK_b,            togglebar,         {0} },
+	{ MODKEY,                       XK_b,            spawntag,          {.ui = 1 << 9} },
 	{ MODKEY,                       XK_c,            spawntag,          {.ui = 1 << 4} },
 	{ MODKEY,                       XK_d,            spawn,             {.v = (const char*[]){"transmenu", NULL}} },
 	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 3} },
@@ -103,12 +103,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_n,            spawntag,          {.ui = 1 << 7} },
 	{ MODKEY,                       XK_o,            zoom,              {0} },
 	{ MODKEY,                       XK_p,            spawntag,          {.ui = 1 << 5} },
-	{ MODKEY,                       XK_q,            killclient,        {0} },
 	{ MODKEY,                       XK_r,            spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_s,            spawn,             {.v = (const char*[]){"screenshot", NULL}} },
+	{ MODKEY,                       XK_t,            spawn,             {.v = (const char*[]){"topper", NULL}} },
 	{ MODKEY,                       XK_v,            spawn,             {.v = (const char*[]){"clipmenu", NULL}} },
-	{ MODKEY,                       XK_w,            spawntag,          {.ui = 1 << 9} },
-	{ MODKEY,                       XK_x,            spawn,             {.v = (const char*[]){"topper", NULL}} },
+	{ MODKEY,                       XK_w,            killclient,        {0} },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL} },
 	{ MODKEY,                       XK_minus,        spawn,	            {.v = (const char*[]){"volume down", NULL}} },
 	{ MODKEY,                       XK_equal,        spawn,	            {.v = (const char*[]){"volume up", NULL}} },
