@@ -8,7 +8,7 @@ static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 0;        /* 0 means bottom bar */
 static const int barspacing           = 16;       /* spacing between bar and fonts */
 static const int focusonwheel         = 0;        /* 0 means only focus on click*/
-static const char *fonts[]            = { "graphical:size=16" };
+static const char *fonts[]            = { "graphical:size=14" };
 static char normbgcolor[]             = "#222222";
 static char normbordercolor[]         = "#444444";
 static char normfgcolor[]             = "#bbbbbb";
@@ -29,7 +29,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "󰎞", "", "󰥠", "󰇮", "󰎕", "󰖺", "󰖟" };
+static const char *tags[] = { "", "󰖟", "", "", "󰎞", "", "󰥠", "󰇮", "󰎕", "󰖺" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -76,6 +76,7 @@ static const char *termcmd[]  = { "st", NULL };
 /* applications per tag */
 static const Arg tagexec[] = {
 	{ .v = runcmd },
+	SHCMD("browser"),
 	{ .v = termcmd },
 	SHCMD("explorer"),
 	SHCMD("editor"),
@@ -83,27 +84,26 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){"tui", "cmus", NULL} },
 	{ .v = (const char*[]){"tui", "aerc", NULL} },
 	{ .v = (const char*[]){"tui", "newsraft", NULL} },
-	SHCMD("steam"),
-	SHCMD("browser")
+	SHCMD("steam")
 };
 
 /* keybidings */
 static const Key keys[] = {
 	/* modifier                     key              function           argument */
-	{ MODKEY,                       XK_a,            spawntag,          {.ui = 1 << 1} },
-	{ MODKEY,                       XK_b,            spawntag,          {.ui = 1 << 9} },
-	{ MODKEY,                       XK_c,            spawntag,          {.ui = 1 << 4} },
+	{ MODKEY,                       XK_a,            spawntag,          {.ui = 1 << 2} },
+	{ MODKEY,                       XK_b,            spawntag,          {.ui = 1 << 1} },
+	{ MODKEY,                       XK_c,            spawntag,          {.ui = 1 << 5} },
 	{ MODKEY,                       XK_d,            spawn,             {.v = (const char*[]){"transmenu", NULL}} },
-	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 3} },
-	{ MODKEY,                       XK_f,            spawntag,          {.ui = 1 << 2} },
-	{ MODKEY,                       XK_g,            spawntag,          {.ui = 1 << 8} },
+	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 4} },
+	{ MODKEY,                       XK_f,            spawntag,          {.ui = 1 << 3} },
+	{ MODKEY,                       XK_g,            spawntag,          {.ui = 1 << 9} },
 	{ MODKEY,                       XK_h,            spawn,             {.v = (const char*[]){"aboutmenu", NULL}} },
 	{ MODKEY,                       XK_i,            spawn,             {.v = (const char*[]){"settings", NULL}} },
 	{ MODKEY,                       XK_l,            spawn,             {.v = (const char*[]){"powermenu", NULL}} },
-	{ MODKEY,                       XK_m,            spawntag,          {.ui = 1 << 6} },
-	{ MODKEY,                       XK_n,            spawntag,          {.ui = 1 << 7} },
+	{ MODKEY,                       XK_m,            spawntag,          {.ui = 1 << 7} },
+	{ MODKEY,                       XK_n,            spawntag,          {.ui = 1 << 8} },
 	{ MODKEY,                       XK_o,            zoom,              {0} },
-	{ MODKEY,                       XK_p,            spawntag,          {.ui = 1 << 5} },
+	{ MODKEY,                       XK_p,            spawntag,          {.ui = 1 << 6} },
 	{ MODKEY,                       XK_q,            killclient,        {0} },
 	{ MODKEY,                       XK_r,            spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_s,            spawn,             {.v = (const char*[]){"screenshot", NULL}} },
@@ -154,13 +154,11 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button4,        shiftview,      {.i = -1} },
 	{ ClkTagBar,            MODKEY,         Button5,        shiftview,      {.i = +1} },
 	{ ClkLtSymbol,          0,              Button1,        view,           {0} },
-	{ ClkLtSymbol,          0,              Button2,        spawn,          {.v = (const char*[]){"powermenu", NULL}} },
 	{ ClkLtSymbol,          0,              Button3,        view,           {.ui = ~0} },
 	{ ClkLtSymbol,          0,              Button4,        setlayout,      {.v = &layouts[1]} },
 	{ ClkLtSymbol,          0,              Button5,        setlayout,      {.v = &layouts[0]} },
 	{ ClkLtSymbol,          MODKEY,         Button4,        shiftview,      {.i = -1} },
 	{ ClkLtSymbol,          MODKEY,         Button5,        shiftview,      {.i = +1} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = (const char*[]){"settings", NULL}} },
 	{ ClkStatusText,        0,              Button3,        spawn,          {.v = (const char*[]){"volume toggle", NULL}} },
 	{ ClkStatusText,        0,              Button4,        spawn,          {.v = (const char*[]){"volume up", NULL}} },
 	{ ClkStatusText,        0,              Button5,        spawn,          {.v = (const char*[]){"volume down", NULL}} },
@@ -171,7 +169,6 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkClientWin,         MODKEY,         Button4,        shiftview,      {.i = -1} },
 	{ ClkClientWin,         MODKEY,         Button5,        shiftview,      {.i = +1} },
-	{ ClkRootWin,           0,              Button2,        spawn,          {.v = (const char*[]){"wallpaper", NULL}} },
 	{ ClkRootWin,           0,              Button3,        togglebar,      {0} },
 	{ ClkRootWin,           MODKEY,         Button4,        shiftview,      {.i = -1} },
 	{ ClkRootWin,           MODKEY,         Button5,        shiftview,      {.i = +1} },
