@@ -80,7 +80,7 @@ static const Arg tagexec[] = {
 	{ .v = termcmd },
 	SHCMD("explorer"),
 	SHCMD("editor"),
-	{ .v = (const char*[]){"tui", "bc", NULL} },
+	{ .v = (const char*[]){"tui", "bc -l", NULL} },
 	{ .v = (const char*[]){"tui", "cmus", NULL} },
 	{ .v = (const char*[]){"tui", "aerc", NULL} },
 	{ .v = (const char*[]){"tui", "newsraft", NULL} },
