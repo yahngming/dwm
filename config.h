@@ -7,7 +7,6 @@ static const unsigned int snap        = 8;        /* snap pixel */
 static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 0;        /* 0 means bottom bar */
 static const int barspacing           = 16;       /* spacing between bar and fonts */
-static const int focusonwheel         = 0;        /* 0 means only focus on click*/
 static const char *fonts[]            = { "graphical:size=14" };
 static char normbgcolor[]             = "#222222";
 static char normbordercolor[]         = "#444444";
