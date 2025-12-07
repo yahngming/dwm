@@ -1103,13 +1103,14 @@ manage(Window w, XWindowAttributes *wa)
 		c->isfloating = c->oldstate = trans != None || c->isfixed;
 	if (c->isfloating)
 		XRaiseWindow(dpy, c->win);
-	if (c->isfullscreen)
-		setfullscreen(c, 1);
 	attach(c);
 	attachstack(c);
 	XChangeProperty(dpy, root, netatom[NetClientList], XA_WINDOW, 32, PropModeAppend,
 		(unsigned char *) &(c->win), 1);
-	XMoveResizeWindow(dpy, c->win, c->x + 2 * sw, c->y, c->w, c->h); /* some windows require this */
+	if (c->isfullscreen)
+		XMoveResizeWindow(dpy, c->win, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
+	else
+		XMoveResizeWindow(dpy, c->win, c->x + 2 * sw, c->y, c->w, c->h); /* some windows require this */
 	setclientstate(c, NormalState);
 	if (c->mon == selmon)
 		unfocus(selmon->sel, 0);
@@ -1525,12 +1526,7 @@ setfullscreen(Client *c, int fullscreen)
 		c->oldbw = c->bw;
 		c->bw = 0;
 		c->isfloating = 1;
-		// resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
-		XMoveResizeWindow(dpy, c->win, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
-		c->x = c->mon->mx;
-		c->y = c->mon->my;
-		c->w = c->mon->mw;
-		c->h = c->mon->mh;
+		resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
 		XRaiseWindow(dpy, c->win);
 	} else if (!fullscreen && c->isfullscreen){
 		XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
