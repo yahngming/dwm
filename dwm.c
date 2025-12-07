@@ -1797,6 +1797,7 @@ togglefloating(const Arg *arg)
 	arrange(selmon);
 }
 
+void
 togglefullscreen(const Arg *arg)
 {
 	if (selmon->sel)
