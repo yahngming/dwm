@@ -38,8 +38,8 @@ static const Rule rules[] = {
 	 */
 	/* class            instance   title   tags mask   isfloating   isfullscreen   monitor */
 	{  "center",        NULL,      NULL,   0,          1,           0,             -1 },
-	{  "fullscreen",    NULL,      NULL,   0,          1,           1,             -1 },
-	{  "screensaver",   NULL,      NULL,   0,          1,           1,             -1 },
+	{  "fullscreen",    NULL,      NULL,   0,          0,           1,             -1 },
+	{  "screensaver",   NULL,      NULL,   0,          0,           1,             -1 },
 };
 
 /* layout(s) */
