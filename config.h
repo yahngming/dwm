@@ -67,26 +67,21 @@ static const char *monocles[] = { "󰼏", "󰼐", "󰼑", "󰼒", "󰼓", "󰼔"
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *runcmd[] = { "launcher", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "st", NULL };
 
 /* applications per tag */
 static const Arg tagexec[] = {
-	{ .v = runcmd },
-	SHCMD("browser"),
-	{ .v = termcmd },
-	SHCMD("explorer"),
-	SHCMD("editor"),
+	{ .v = (const char*[]){"launcher", "-m", dmenumon, NULL} },
+	{ .v = (const char*[]){"browser", NULL} },
+	{ .v = (const char*[]){"terminal", NULL} },
+	{ .v = (const char*[]){"explorer", NULL} },
+	{ .v = (const char*[]){"editor", NULL} },
 	{ .v = (const char*[]){"tui", "bc -l", NULL} },
 	{ .v = (const char*[]){"tui", "cmus", NULL} },
 	{ .v = (const char*[]){"tui", "aerc", NULL} },
 	{ .v = (const char*[]){"tui", "newsraft", NULL} },
-	SHCMD("steam")
+	{ .v = (const char*[]){"steam", NULL} }
 };
 
 /* keybidings */
