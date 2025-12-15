@@ -165,7 +165,6 @@ static void arrange(Monitor *m);
 static void arrangemon(Monitor *m);
 static void attach(Client *c);
 static void attachstack(Client *c);
-static void autostart(void);
 static void buttonpress(XEvent *e);
 static void checkotherwm(void);
 static void cleanup(void);
@@ -226,6 +225,7 @@ static void seturgent(Client *c, int urg);
 static void shiftview(const Arg *arg);
 static void showhide(Client *c);
 static void spawn(const Arg *arg);
+static void spawnauto(void);
 static void spawntag(const Arg *arg);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
@@ -303,9 +303,9 @@ static Colormap cmap;
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
-/* dwm will keep pid's of processes from autostart array and kill them at quit */
-static pid_t *autostart_pids;
-static size_t autostart_len;
+/* dwm will keep pid's of processes from autoexec array and kill them at quit */
+static pid_t *autoexec_pids;
+static size_t autoexec_len;
 
 /* function implementations */
 void
@@ -448,29 +448,6 @@ attachstack(Client *c)
 {
 	c->snext = c->mon->stack;
 	c->mon->stack = c;
-}
-
-static void
-autostart() {
-	const char *const *p;
-	size_t i = 0;
-
-	/* count entries */
-	for (p = autostart; *p; autostart_len++, p++)
-		while (*++p);
-
-	autostart_pids = malloc(autostart_len * sizeof(pid_t));
-	for (p = autostart; *p; i++, p++) {
-		if ((autostart_pids[i] = fork()) == 0) {
-			setsid();
-			execvp(*p, (char *const *)p);
-			fprintf(stderr, "dwm: execvp %s\n", *p);
-			perror(" failed");
-			_exit(EXIT_FAILURE);
-		}
-		/* skip arguments */
-		while (*++p);
-	}
 }
 
 void
@@ -1341,10 +1318,10 @@ quit(const Arg *arg)
 	size_t i;
 
 	/* kill child processes */
-	for (i = 0; i < autostart_len; i++) {
-		if (0 < autostart_pids[i]) {
-			kill(autostart_pids[i], SIGTERM);
-			waitpid(autostart_pids[i], NULL, 0);
+	for (i = 0; i < autoexec_len; i++) {
+		if (0 < autoexec_pids[i]) {
+			kill(autoexec_pids[i], SIGTERM);
+			waitpid(autoexec_pids[i], NULL, 0);
 		}
 	}
 
@@ -1669,9 +1646,9 @@ setup(void)
 	while (0 < (pid = waitpid(-1, NULL, WNOHANG))) {
 		pid_t *p, *lim;
 
-		if (!(p = autostart_pids))
+		if (!(p = autoexec_pids))
 			continue;
-		lim = &p[autostart_len];
+		lim = &p[autoexec_len];
 
 		for (; p < lim; p++) {
 			if (*p == pid) {
@@ -1805,6 +1782,29 @@ spawn(const Arg *arg)
 
 		execvp(((char **)arg->v)[0], (char **)arg->v);
 		die("dwm: execvp '%s' failed:", ((char **)arg->v)[0]);
+	}
+}
+
+static void
+spawnauto() {
+	const char *const *p;
+	size_t i = 0;
+
+	/* count entries */
+	for (p = autoexec; *p; autoexec_len++, p++)
+		while (*++p);
+
+	autoexec_pids = malloc(autoexec_len * sizeof(pid_t));
+	for (p = autoexec; *p; i++, p++) {
+		if ((autoexec_pids[i] = fork()) == 0) {
+			setsid();
+			execvp(*p, (char *const *)p);
+			fprintf(stderr, "dwm: execvp %s\n", *p);
+			perror(" failed");
+			_exit(EXIT_FAILURE);
+		}
+		/* skip arguments */
+		while (*++p);
 	}
 }
 
@@ -2367,7 +2367,7 @@ main(int argc, char *argv[])
 	checkotherwm();
 	XrmInitialize();
 	loadxrdb();
-	autostart();
+	spawnauto();
 	setup();
 #ifdef __OpenBSD__
 	if (pledge("stdio rpath proc exec", NULL) == -1)
