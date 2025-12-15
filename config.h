@@ -83,6 +83,12 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){"tui", "tenere", NULL} }
 };
 
+/* autostart */
+static const char *const autostart[] = {
+	"autostart", NULL,
+	NULL
+};
+
 /* keybidings */
 static const Key keys[] = {
 	/* modifier                     key              function           argument */
