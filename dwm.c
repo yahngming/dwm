@@ -165,6 +165,7 @@ static void arrange(Monitor *m);
 static void arrangemon(Monitor *m);
 static void attach(Client *c);
 static void attachstack(Client *c);
+static void autostart(void);
 static void buttonpress(XEvent *e);
 static void checkotherwm(void);
 static void cleanup(void);
@@ -301,6 +302,10 @@ static Colormap cmap;
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
+
+/* dwm will keep pid's of processes from autostart array and kill them at quit */
+static pid_t *autostart_pids;
+static size_t autostart_len;
 
 /* function implementations */
 void
@@ -443,6 +448,29 @@ attachstack(Client *c)
 {
 	c->snext = c->mon->stack;
 	c->mon->stack = c;
+}
+
+static void
+autostart() {
+	const char *const *p;
+	size_t i = 0;
+
+	/* count entries */
+	for (p = autostart; *p; autostart_len++, p++)
+		while (*++p);
+
+	autostart_pids = malloc(autostart_len * sizeof(pid_t));
+	for (p = autostart; *p; i++, p++) {
+		if ((autostart_pids[i] = fork()) == 0) {
+			setsid();
+			execvp(*p, (char *const *)p);
+			fprintf(stderr, "dwm: execvp %s\n", *p);
+			perror(" failed");
+			_exit(EXIT_FAILURE);
+		}
+		/* skip arguments */
+		while (*++p);
+	}
 }
 
 void
@@ -1052,32 +1080,32 @@ killclient(const Arg *arg)
 void
 loadxrdb()
 {
-  Display *display;
-  char * resm;
-  XrmDatabase xrdb;
-  char *type;
-  XrmValue value;
+	Display *display;
+	char * resm;
+	XrmDatabase xrdb;
+	char *type;
+	XrmValue value;
 
-  display = XOpenDisplay(NULL);
+	display = XOpenDisplay(NULL);
 
-  if (display != NULL) {
-    resm = XResourceManagerString(display);
+	if (display != NULL) {
+		resm = XResourceManagerString(display);
 
-    if (resm != NULL) {
-      xrdb = XrmGetStringDatabase(resm);
+		if (resm != NULL) {
+			xrdb = XrmGetStringDatabase(resm);
 
-      if (xrdb != NULL) {
-        XRDB_LOAD_COLOR("dwm.color0", normbordercolor);
-        XRDB_LOAD_COLOR("dwm.color0", normbgcolor);
-        XRDB_LOAD_COLOR("dwm.color4", normfgcolor);
-        XRDB_LOAD_COLOR("dwm.color8", selbordercolor);
-        XRDB_LOAD_COLOR("dwm.color4", selbgcolor);
-        XRDB_LOAD_COLOR("dwm.color0", selfgcolor);
-      }
-    }
-  }
+			if (xrdb != NULL) {
+				XRDB_LOAD_COLOR("dwm.color0", normbordercolor);
+				XRDB_LOAD_COLOR("dwm.color0", normbgcolor);
+				XRDB_LOAD_COLOR("dwm.color4", normfgcolor);
+				XRDB_LOAD_COLOR("dwm.color8", selbordercolor);
+				XRDB_LOAD_COLOR("dwm.color4", selbgcolor);
+				XRDB_LOAD_COLOR("dwm.color0", selfgcolor);
+			}
+		}
+	}
 
-  XCloseDisplay(display);
+	XCloseDisplay(display);
 }
 
 void
@@ -1310,6 +1338,16 @@ propertynotify(XEvent *e)
 void
 quit(const Arg *arg)
 {
+	size_t i;
+
+	/* kill child processes */
+	for (i = 0; i < autostart_len; i++) {
+		if (0 < autostart_pids[i]) {
+			kill(autostart_pids[i], SIGTERM);
+			waitpid(autostart_pids[i], NULL, 0);
+		}
+	}
+
 	running = 0;
 }
 
@@ -1619,6 +1657,7 @@ setup(void)
 	XSetWindowAttributes wa;
 	Atom utf8string;
 	struct sigaction sa;
+	pid_t pid;
 
 	/* do not transform children into zombies when they terminate */
 	sigemptyset(&sa.sa_mask);
@@ -1627,7 +1666,21 @@ setup(void)
 	sigaction(SIGCHLD, &sa, NULL);
 
 	/* clean up any zombies (inherited from .xinitrc etc) immediately */
-	while (waitpid(-1, NULL, WNOHANG) > 0);
+	while (0 < (pid = waitpid(-1, NULL, WNOHANG))) {
+		pid_t *p, *lim;
+
+		if (!(p = autostart_pids))
+			continue;
+		lim = &p[autostart_len];
+
+		for (; p < lim; p++) {
+			if (*p == pid) {
+				*p = -1;
+				break;
+			}
+		}
+
+	}
 
 	/* init screen */
 	screen = DefaultScreen(dpy);
@@ -2243,24 +2296,24 @@ xerrorstart(Display *dpy, XErrorEvent *ee)
 void
 xrdb(const Arg *arg)
 {
-  loadxrdb();
-  int i;
-  for (i = 0; i < LENGTH(colors); i++)
-                scheme[i] = drw_scm_create(drw, colors[i], alphas[i], 3);
-  focus(NULL);
-  arrange(NULL);
+	loadxrdb();
+	int i;
+	for (i = 0; i < LENGTH(colors); i++)
+		scheme[i] = drw_scm_create(drw, colors[i], alphas[i], 3);
+	focus(NULL);
+	arrange(NULL);
 }
 
 void
 xinitvisual()
 {
-    XVisualInfo *infos;
+	XVisualInfo *infos;
 	XRenderPictFormat *fmt;
 	int nitems;
 	int i;
 
 	XVisualInfo tpl = {
-        .screen = screen,
+		.screen = screen,
 		.depth = 32,
 		.class = TrueColor
 	};
@@ -2269,23 +2322,23 @@ xinitvisual()
 	infos = XGetVisualInfo(dpy, masks, &tpl, &nitems);
 	visual = NULL;
 	for(i = 0; i < nitems; i ++) {
-        fmt = XRenderFindVisualFormat(dpy, infos[i].visual);
+	fmt = XRenderFindVisualFormat(dpy, infos[i].visual);
 		if (fmt->type == PictTypeDirect && fmt->direct.alphaMask) {
-            visual = infos[i].visual;
+			visual = infos[i].visual;
 			depth = infos[i].depth;
 			cmap = XCreateColormap(dpy, root, visual, AllocNone);
 			useargb = 1;
 			break;
-        }
-    }
+		}
+	}
 
 	XFree(infos);
 
 	if (! visual) {
-        visual = DefaultVisual(dpy, screen);
+		visual = DefaultVisual(dpy, screen);
 		depth = DefaultDepth(dpy, screen);
 		cmap = DefaultColormap(dpy, screen);
-    }
+	}
 }
 
 void
@@ -2312,8 +2365,9 @@ main(int argc, char *argv[])
 	if (!(dpy = XOpenDisplay(NULL)))
 		die("dwm: cannot open display");
 	checkotherwm();
-        XrmInitialize();
-        loadxrdb();
+	XrmInitialize();
+	loadxrdb();
+	autostart();
 	setup();
 #ifdef __OpenBSD__
 	if (pledge("stdio rpath proc exec", NULL) == -1)
