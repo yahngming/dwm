@@ -83,8 +83,8 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){"tui", "tenere", NULL} }
 };
 
-/* autostart */
-static const char *const autostart[] = {
+/* autoexec */
+static const char *const autoexec[] = {
 	"autostart", NULL,
 	NULL
 };
