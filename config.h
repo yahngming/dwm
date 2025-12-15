@@ -28,7 +28,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "󰖟", "", "", "󰎞", "", "󰥠", "󰇮", "󰎕", "󰖺" };
+static const char *tags[] = { "", "󰖟", "", "", "󰎞", "", "󰥠", "󰇮", "󰎕", "󰭻" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -80,19 +80,18 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){"tui", "cmus", NULL} },
 	{ .v = (const char*[]){"tui", "aerc", NULL} },
 	{ .v = (const char*[]){"tui", "newsraft", NULL} },
-	{ .v = (const char*[]){"steam", NULL} }
+	{ .v = (const char*[]){"tui", "tenere", NULL} }
 };
 
 /* keybidings */
 static const Key keys[] = {
 	/* modifier                     key              function           argument */
-	{ MODKEY,                       XK_a,            spawntag,          {.ui = 1 << 2} },
+	{ MODKEY,                       XK_a,            spawntag,          {.ui = 1 << 9} },
 	{ MODKEY,                       XK_b,            spawntag,          {.ui = 1 << 1} },
 	{ MODKEY,                       XK_c,            spawntag,          {.ui = 1 << 5} },
 	{ MODKEY,                       XK_d,            spawn,             {.v = (const char*[]){"transmenu", NULL}} },
 	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 4} },
 	{ MODKEY,                       XK_f,            spawntag,          {.ui = 1 << 3} },
-	{ MODKEY,                       XK_g,            spawntag,          {.ui = 1 << 9} },
 	{ MODKEY,                       XK_h,            spawn,             {.v = (const char*[]){"aboutmenu", NULL}} },
 	{ MODKEY,                       XK_i,            spawn,             {.v = (const char*[]){"settings", NULL}} },
 	{ MODKEY,                       XK_l,            spawn,             {.v = (const char*[]){"powermenu", NULL}} },
@@ -105,6 +104,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_s,            spawn,             {.v = (const char*[]){"screenshot", NULL}} },
 	{ MODKEY,                       XK_t,            spawn,             {.v = (const char*[]){"topper", NULL}} },
 	{ MODKEY,                       XK_v,            spawn,             {.v = (const char*[]){"clipmenu", NULL}} },
+	{ MODKEY,                       XK_z,            spawntag,          {.ui = 1 << 2} },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL} },
 	{ MODKEY,                       XK_minus,        spawn,	            {.v = (const char*[]){"volume down", NULL}} },
 	{ MODKEY,                       XK_equal,        spawn,	            {.v = (const char*[]){"volume up", NULL}} },
