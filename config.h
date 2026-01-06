@@ -28,7 +28,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "󰖟", "", "", "󰎞", "", "󰥠", "󰇮", "󰎕", "󰭻" };
+static const char *tags[] = { "", "󰖟", "", "", "󰎞", "", "󰥠", "󰇮", "󰎕", "󰊖" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -80,7 +80,7 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){"music", NULL} },
 	{ .v = (const char*[]){"mail", NULL} },
 	{ .v = (const char*[]){"news", NULL} },
-	{ .v = (const char*[]){"ai", NULL} }
+	{ .v = (const char*[]){"game", NULL} }
 };
 
 /* autoexec */
@@ -92,12 +92,13 @@ static const char *const autoexec[] = {
 /* keybidings */
 static const Key keys[] = {
 	/* modifier                     key              function           argument */
-	{ MODKEY,                       XK_a,            spawntag,          {.ui = 1 << 9} },
+	{ MODKEY,                       XK_a,            spawntag,          {.v = (const char*[]){"ai", NULL}} },
 	{ MODKEY,                       XK_b,            spawntag,          {.ui = 1 << 1} },
 	{ MODKEY,                       XK_c,            spawntag,          {.ui = 1 << 5} },
 	{ MODKEY,                       XK_d,            spawn,             {.v = (const char*[]){"transmenu", NULL}} },
 	{ MODKEY,                       XK_e,            spawntag,          {.ui = 1 << 4} },
 	{ MODKEY,                       XK_f,            spawntag,          {.ui = 1 << 3} },
+	{ MODKEY,                       XK_g,            spawntag,          {.ui = 1 << 9} },
 	{ MODKEY,                       XK_h,            spawn,             {.v = (const char*[]){"aboutmenu", NULL}} },
 	{ MODKEY,                       XK_i,            spawn,             {.v = (const char*[]){"settings", NULL}} },
 	{ MODKEY,                       XK_l,            spawn,             {.v = (const char*[]){"powermenu", NULL}} },
