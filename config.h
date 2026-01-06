@@ -76,11 +76,11 @@ static const Arg tagexec[] = {
 	{ .v = (const char*[]){"terminal", NULL} },
 	{ .v = (const char*[]){"explorer", NULL} },
 	{ .v = (const char*[]){"editor", NULL} },
-	{ .v = (const char*[]){"tui", "bc -l", NULL} },
-	{ .v = (const char*[]){"tui", "cmus", NULL} },
-	{ .v = (const char*[]){"tui", "aerc", NULL} },
-	{ .v = (const char*[]){"tui", "newsraft", NULL} },
-	{ .v = (const char*[]){"tui", "tenere", NULL} }
+	{ .v = (const char*[]){"calculator", NULL} },
+	{ .v = (const char*[]){"music", NULL} },
+	{ .v = (const char*[]){"mail", NULL} },
+	{ .v = (const char*[]){"news", NULL} },
+	{ .v = (const char*[]){"ai", NULL} }
 };
 
 /* autoexec */
@@ -104,11 +104,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_m,            spawntag,          {.ui = 1 << 7} },
 	{ MODKEY,                       XK_n,            spawntag,          {.ui = 1 << 8} },
 	{ MODKEY,                       XK_o,            zoom,              {0} },
-	{ MODKEY,                       XK_p,            spawntag,          {.ui = 1 << 6} },
 	{ MODKEY,                       XK_q,            killclient,        {0} },
 	{ MODKEY,                       XK_r,            spawntag,          {.ui = 1 << 0} },
 	{ MODKEY,                       XK_s,            spawn,             {.v = (const char*[]){"screenshot", NULL}} },
 	{ MODKEY,                       XK_t,            spawn,             {.v = (const char*[]){"topper", NULL}} },
+	{ MODKEY,                       XK_u,            spawntag,          {.ui = 1 << 6} },
 	{ MODKEY,                       XK_v,            spawn,             {.v = (const char*[]){"clipmenu", NULL}} },
 	{ MODKEY,                       XK_z,            spawntag,          {.ui = 1 << 2} },
 	{ MODKEY,                       XK_F5,           xrdb,              {.v = NULL} },
