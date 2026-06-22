@@ -93,7 +93,7 @@ static const char *const autoexec[] = {
 /* keybidings */
 static const Key keys[] = {
 	/* modifier                     key              function           argument */
-	{ MODKEY,                       XK_a,            spawntag,          {.v = (const char*[]){"ai", NULL}} },
+	{ MODKEY,                       XK_a,            spawn,             {.v = (const char*[]){"ai", NULL}} },
 	{ MODKEY,                       XK_b,            spawntag,          {.ui = 1 << 1} },
 	{ MODKEY,                       XK_c,            spawntag,          {.ui = 1 << 5} },
 	{ MODKEY,                       XK_d,            spawn,             {.v = (const char*[]){"transmenu", NULL}} },
