@@ -86,7 +86,7 @@ static const Arg tagexec[] = {
 
 /* autoexec */
 static const char *const autoexec[] = {
-	"autostart", NULL,
+	"autoexec", NULL,
 	NULL
 };
 
