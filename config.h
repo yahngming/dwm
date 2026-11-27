@@ -68,7 +68,7 @@ static const char *monocles[] = { "󰼏", "󰼐", "󰼑", "󰼒", "󰼓", "󰼔"
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static char dmenumon[8]; /* component of dmenucmd, manipulated in spawn() */
 
 /* applications per tag */
 static const Arg tagexec[] = {
