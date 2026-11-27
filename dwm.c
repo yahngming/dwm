@@ -1775,9 +1775,15 @@ void
 spawn(const Arg *arg)
 {
 	struct sigaction sa;
+	pid_t pid;
 
 	dmenumon[0] = '0' + selmon->num;
-	if (fork() == 0) {
+
+	if ((pid = fork()) == -1) {
+		fprintf(stderr, "dwm: fork failed: %s\n", strerror(errno));
+		return;
+	}
+	if (pid == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));
 		setsid();
